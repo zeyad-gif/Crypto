@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRYPTO LAB - Playground</title>
+    <link rel="stylesheet" href="CryptoLab.css" />
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav-container">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <div class="logo-Crypto">
+              <div class="Crypto-shape"></div>
+            </div>
+          </div>
+          <span class="logo-text">
+            <span class="Crypto">CRYPTO</span>
+            <span class="Lab">LAB</span>
+          </span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html#home" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#skills" class="nav-link">Arsenal</a></li>
+          <li>
+            <a href="playground.html" class="nav-link active">Playground</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="algo-selector-header">
+      <div class="algo-selector-container">
+        <select id="algoDropdown" class="algo-dropdown">
+          <option value="caesar-cipher" data-icon="🏛️">🏛️ Caesar Cipher</option>
+          <option value="Vigenère-Cipher" data-icon="📑">
+            📑 Vigenère Cipher
+          </option>
+          <option value="Affine-Cipher" data-icon="📈">📈 Affine Cipher</option>
+          <option value="Hill-Cipher" data-icon="🔢">🔢 Hill Cipher</option>
+          <option value="OTP" data-icon="🎲">🎲 One-Time Pad (OTP)</option>
+          <option value="Hash" data-icon="🔏">🔏 SHA-256 Hash</option>
+          <option value="Monoalphabetic" data-icon="🔤">
+            🔤 Monoalphabetic
+          </option>
+          <option value="Polyalphabetic" data-icon="🔠">
+            🔠 Polyalphabetic
+          </option>
+          <option value="RAIL FENCE" data-icon="🛤️">🛤️ Rail Fence</option>
+          <option value="COLUMNER-TRANSPOSITION" data-icon="🧱">
+            🧱 Columnar Transposition
+          </option>
+          <option value="DES" data-icon="🔐">🔐 DES Cipher</option>
+          <option value="AES" data-icon="🔒">🔒 AES Cipher</option>
+          <option value="RSA" data-icon="🗝️">🗝️ RSA Cipher</option>
+          <option value="DIFFIE-HELLMAN" data-icon="🤝">
+            🤝 Diffie-Hellman
+          </option>
+        </select>
+      </div>
+    </div>
+    <section class="caesar-hero" id="playground">
+      <div class="caesar-container">
+      <div class="cipher-wheel-section" style="display: none;">          
+        <h2>CAESAR CIPHER</h2>
+          <div class="cipher">
+            <div id="wheelCanvas"></div>
+            <div class="actions">
+              <div class="slider-container">
+                <input
+                  type="range"
+                  id="shiftSlider"
+                  min="0"
+                  max="26"
+                  value="13"
+                  step="1"
+                  disabled
+                  class="no-event"
+                />
+                <span id="shiftValue">13</span>
+              </div>
+              <button id="randomBtn" class="random-btn">RANDOM</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="encryption-box">
+          <h2>ENCRYPT / DECRYPT</h2>
+          <div class="mode-toggle">
+            <button id="encryptModeBtn" class="mode-btn active">
+              <img
+                src="images/lock-solid.png"
+                alt="Encrypt"
+                class="mode-icon"
+              />
+              ENCRYPT
+            </button>
+            <button id="decryptModeBtn" class="mode-btn">
+              <img
+                src="images/lock-open-solid.png"
+                alt="Encrypt"
+                class="mode-icon"
+              />
+              DECRYPT
+            </button>
+          </div>
+          <div class="input-group">
+            <label>Input Text</label>
+            <textarea
+              id="inputText"
+              rows="5"
+              placeholder="Type your secret message..."
+            >
+hello world</textarea
+            >
+          </div>
+          <div class="input-group">
+            <label>Output (Caesar Shift)</label>
+            <div class="output" id="outputText">
+              Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar
+            </div>
+          </div>
+          <button id="copyBtn" class="copy-btn">COPY OUTPUT</button>
+          </div>
+
+          <div id="cryptoOutput" class="crypto-output"></div>
+        </div>
+      </div>
+
+      <div class="encryption-particles" id="encryptionParticles"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <div class="logo-Crypto"><div class="Crypto-shape"></div></div>
+            </div>
+            <span class="logo-text"
+              ><span class="Crypto">CRYPTO</span
+              ><span class="Lab">LAB</span></span
+            >
+          </div>
+          <p class="footer-description">
+            Explore encryption algorithms in a secure real-time environment.
+            Learn how data is protected through modern and classical techniques.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-icon">f</a
+            ><a href="#" class="social-icon">t</a
+            ><a href="#" class="social-icon">in</a
+            ><a href="#" class="social-icon">ig</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Algorithms</h4>
+          <div class="footer-links">
+            <a href="#">Caesar</a><a href="#">Vigenère</a><a href="#">Affine</a
+            ><a href="#">Hill</a><a href="#">OTP</a><a href="#">DES</a
+            ><a href="#">AES</a><a href="#">SHA-256</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Platform</h4>
+          <div class="footer-links">
+            <a href="playground.html">Playground</a><a href="#">Compare</a
+            ><a href="#">How It Works</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Project</h4>
+          <div class="footer-links">
+            <a href="index.html#about">About</a><a href="#">Docs</a
+            ><a href="#">Updates</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-heading">Supervised By</h4>
+          <div class="footer-links">
+            <a href="#"
+              ><h2 class="name-pulse">Prof. Wael Abd El-Kader Awad</h2></a
+            >
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-heading">Copyrights</h4>
+          <div class="footer-links">
+            <a href="#"><h3 class="name-pulse">Zeyad Hagag</h3></a
+            ><a href="#"><h3 class="name-pulse">Ahmed Abo-Elnaga</h3></a
+            ><a href="#"><h3 class="name-pulse">Khaled Yonis</h3></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">© 2026 CRYPTO LAB. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <div class="cursor">
+      <div class="cursor__ball cursor__ball--big">
+        <svg height="30" width="30">
+          <circle cx="15" cy="15" r="12"></circle>
+        </svg>
+      </div>
+      <div class="cursor__ball cursor__ball--small">
+        <svg height="10" width="10"><circle cx="5" cy="5" r="4"></circle></svg>
+      </div>
+    </div>
+
+    <script src="algorithms/caesar.js"></script>
+    <script src="algorithms/vigenere.js"></script>
+    <script src="algorithms/affine.js"></script>
+    <script src="algorithms/hill.js"></script>
+    <script src="algorithms/otp.js"></script>
+    <script src="algorithms/hash.js"></script>
+    <script src="algorithms/monoalphabetic.js"></script>
+    <script src="algorithms/polyalphabetic.js"></script>
+    <script src="algorithms/rail-fence.js"></script>
+    <script src="algorithms/columnar-transposition.js"></script>
+    <script src="algorithms/des.js"></script>
+    <script src="algorithms/aes.js"></script>
+    <script src="algorithms/rsa.js"></script>
+    <script src="algorithms/diffie-hellman.js"></script>
+
+    <script src="playground.js"></script>
+  </body>
+</html>
